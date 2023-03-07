@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask trapLayerMask;
     [SerializeField] private float climbSpeed;
     [SerializeField] GameObject replayMenu;
+    [SerializeField] GameObject teleport;
 
     private void Start()
     {
@@ -45,6 +46,15 @@ public class PlayerMovement : MonoBehaviour
         CheckClimb();
     }
 
+    protected void CheckTeleport()
+    {
+        // Test condition
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            teleport.SetActive(true);
+        }
+    }
+
     protected void Run(float xdirection)
     {
         if (xdirection < 0f)
@@ -67,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
-
     }
+
     protected void Jump()
     {
         if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && CheckIsGrounded())
@@ -102,42 +112,12 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ReplayMenu", 1f);
         }
     }
+
     private void ReplayMenu()
     {
         this.replayMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // Debug.Log("Open chest?");
-    }
-
-    // Moving Platform
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        Debug.Log("abc");
-        if (col.gameObject.CompareTag("MovingPlatform"))
-        {
-            transform.parent.SetParent(col.transform);
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D col)
-    {
-        Debug.Log("abcd");
-        if (col.gameObject.CompareTag("MovingPlatform"))
-        {
-            transform.parent.SetParent(col.transform);
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("MovingPlatform"))
-        {
-            transform.parent.SetParent(null);
-        }
-    }
 
 }
