@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - MovingPlatform
   - Chest
+  - Teleport
+  - Attack
+  - Enermy
+  - StoneTeleport
   layers:
   - Default
   - TransparentFX
@@ -18,8 +22,8 @@ TagManager:
   - Ground
   - Ladder
   - Chest
-  - 
-  - 
+  - Enermy
+  - Stand
   - 
   - 
   - 

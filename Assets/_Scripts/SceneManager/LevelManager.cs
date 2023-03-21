@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,9 +13,7 @@ public class LevelManager : MonoBehaviour
 
         Invoke("DeActiveFade", 1f);
 
-        int checkLevel = 2;
-        // if pass level ... checkLevel += 1...
-        int levelAt = PlayerPrefs.GetInt("levelAt", checkLevel);
+        int levelAt = PlayerPrefs.GetInt("levelAt", 2);
         for (int i = 0; i < this.levelButtons.Length; i++)
         {
             if (i + 2 > levelAt)
@@ -35,4 +32,5 @@ public class LevelManager : MonoBehaviour
     {
         this.lvlChanger.SetActive(false);
     }
+
 }

@@ -24,6 +24,12 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void ChooseLevel()
+    {
+        SceneManager.LoadScene("LevelSelection");
+        Time.timeScale = 1f;
+    }
+
     public void Home()
     {
         SceneManager.LoadScene("Home");

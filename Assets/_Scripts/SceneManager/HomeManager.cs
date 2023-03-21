@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class HomeManager : MonoBehaviour
 {
+    public void Home()
+    {
+        SceneManager.LoadScene("Home");
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene("LevelSelection");
@@ -13,6 +18,11 @@ public class HomeManager : MonoBehaviour
         Application.Quit();
 
         //Test on unity editor
-        UnityEditor.EditorApplication.isPlaying = false;
+        // UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    public void DeleteData()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
